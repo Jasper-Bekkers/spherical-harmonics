@@ -1,0 +1,9 @@
+[package]
+name = "spherical-harmonics"
+version = "0.1.0"
+authors = ["Jasper-Bekkers <bekkers@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rand = "0.6.5"
+nalgebra = "0.17.2"
