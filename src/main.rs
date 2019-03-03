@@ -1,12 +1,12 @@
 use rand::Rng;
 use std::f32;
 
-fn get_coefficient_count(order: u32) -> usize {
+fn get_coefficient_count(order: i32) -> usize {
     ((order + 1) * (order + 1)) as usize
 }
 
-fn get_idx(l: u32, m: i32) -> usize {
-    (l * (l + 1) + m as u32) as usize
+fn get_idx(l: i32, m: i32) -> usize {
+    (l * (l + 1) + m) as usize
 }
 
 fn img_y_to_theta(y: u32, h: u32) -> f32 {
@@ -17,7 +17,7 @@ fn img_x_to_phi(x: u32, w: u32) -> f32 {
     2.0 * f32::consts::PI * (x as f32 + 0.5) / w as f32
 }
 
-fn factorial(x: u32) -> f32 {
+fn factorial(x: i32) -> f32 {
     const CACHE: [f32; 16] = [
         1.0,
         1.0,
@@ -50,11 +50,11 @@ fn factorial(x: u32) -> f32 {
     }
 }
 
-fn eval_legendre_polynomial(l: u32, m: i32, x: f32) -> f32 {
+fn eval_legendre_polynomial(l: i32, m: i32, x: f32) -> f32 {
     let mut pmm = 1.0;
     if m > 0 {
         let sign = if m % 2 == 0 { 1.0 } else { -1.0 };
-        pmm = sign * factorial((2 * m - 1) as u32) * (1.0 - x * x).powf((m / 2) as f32);
+        pmm = sign * factorial(2 * m - 1) * (1.0 - x * x).powf((m / 2) as f32);
     }
 
     if l as i32 == m {
@@ -75,9 +75,9 @@ fn eval_legendre_polynomial(l: u32, m: i32, x: f32) -> f32 {
     return pmm1;
 }
 
-fn eval_sh_slow(l: u32, m: i32, phi: f32, theta: f32) -> f32 {
-    let klm = (((2.0 * l as f32 + 1.0) * factorial(l - m.abs() as u32))
-        / (4.0 * f32::consts::PI * factorial(l + m.abs() as u32)))
+fn eval_sh_slow(l: i32, m: i32, phi: f32, theta: f32) -> f32 {
+    let klm = (((2.0 * l as f32 + 1.0) * factorial(l - m.abs()))
+        / (4.0 * f32::consts::PI * factorial(l + m.abs())))
     .sqrt();
 
     if m > 0 {
@@ -89,11 +89,11 @@ fn eval_sh_slow(l: u32, m: i32, phi: f32, theta: f32) -> f32 {
     }
 }
 
-fn eval_sh(l: u32, m: i32, phi: f32, theta: f32) -> f32 {
+fn eval_sh(l: i32, m: i32, phi: f32, theta: f32) -> f32 {
     eval_sh_slow(l, m, phi, theta)
 }
 
-pub fn project_env(order: u32, img: &Image) -> Vec<(f32, f32, f32)> {
+pub fn project_env(order: i32, img: &Image) -> Vec<(f32, f32, f32)> {
     let mut coeffs = vec![(0.0f32, 0.0f32, 0.0f32); get_coefficient_count(order)];
 
     let pixel_area =
@@ -126,7 +126,7 @@ pub fn project_env(order: u32, img: &Image) -> Vec<(f32, f32, f32)> {
 }
 
 pub fn project_fn<R: Rng, F: Fn(f32, f32) -> f32>(
-    order: u32,
+    order: i32,
     sample_count: u32,
     rng: &mut R,
     f: F,
@@ -168,7 +168,7 @@ pub fn to_spherical(dir: &(f32, f32, f32)) -> (f32, f32) {
 }
 
 pub fn project_sparse_samples(
-    order: u32,
+    order: i32,
     dirs: &Vec<(f32, f32, f32)>,
     values: &Vec<f32>,
 ) -> Vec<f32> {
@@ -188,7 +188,7 @@ pub fn project_sparse_samples(
     }
 
     let coeffs = basis_values
-        .svd(false, false)
+        .svd(true, true)
         .solve(&func_values, f32::EPSILON)
         .unwrap();
 
@@ -216,5 +216,6 @@ impl Image {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let result = project_sparse_samples(9, &vec![(0.0, 1.0, 0.0)], &vec![10.0]);
+    println!("{:?}", result);
 }
