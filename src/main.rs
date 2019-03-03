@@ -216,6 +216,6 @@ impl Image {
 }
 
 fn main() {
-    let result = project_sparse_samples(9, &vec![(0.0, 1.0, 0.0)], &vec![10.0]);
+    let result = project_sparse_samples(4, &vec![(0.0, 1.0, 0.0)], &vec![10.0]);
     println!("{:?}", result);
 }
