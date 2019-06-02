@@ -6,15 +6,15 @@ edition = "2018"
 description = "Rust native spherical harmonics library"
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://github.com/Jasper-Bekkers/hassle-rs"
-repository = "https://github.com/Jasper-Bekkers/hassle-rs"
+homepage = "https://github.com/Jasper-Bekkers/spherical-harmonics"
+repository = "https://github.com/Jasper-Bekkers/spherical-harmonics"
 keywords = ["rendering", "spherical harmonics"]
 categories = ["rendering"]
 include = [
     "src/*.rs",
     "Cargo.toml",
 ]
-documentation = "https://docs.rs/hassle-rs"
+documentation = "https://docs.rs/spherical-harmonics"
 
 [badges]
 maintenance = { status = "actively-developed" }
