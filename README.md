@@ -19,11 +19,6 @@ Add this to your `Cargo.toml`:
 spherical_harmonics = "0.1.0"
 ```
 
-Then acquire `dxcompiler.dll` directly from [AppVeyor](https://ci.appveyor.com/project/antiagainst/directxshadercompiler/branch/master/artifacts) or compile it from source according to the instructions in the [DirectXShaderCompiler](https://github.com/Microsoft/DirectXShaderCompiler) GitHub repository and make sure it's in the executable enviroment.
-
-DxcValidator also requires `dxil.dll` which can be grabbed from any recent Windows 10 SDK flight.
-More info: https://www.wihlidal.com/blog/pipeline/2018-09-16-dxil-signing-post-compile/
-
 ## License
 
 Licensed under Apache 2.0 license (http://opensource.org/licenses/Apache-2.0)
