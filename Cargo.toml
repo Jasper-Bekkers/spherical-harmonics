@@ -3,7 +3,22 @@ name = "spherical-harmonics"
 version = "0.1.0"
 authors = ["Jasper-Bekkers <bekkers@gmail.com>"]
 edition = "2018"
+description = "Rust native spherical harmonics library"
+license = "APACHE"
+readme = "README.md"
+homepage = "https://github.com/Jasper-Bekkers/hassle-rs"
+repository = "https://github.com/Jasper-Bekkers/hassle-rs"
+keywords = ["rendering", "spherical harmonics"]
+categories = ["rendering"]
+include = [
+    "src/*.rs",
+    "Cargo.toml",
+]
+documentation = "https://docs.rs/hassle-rs"
+
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 rand = "0.6.5"
-nalgebra = "0.17.2"
+nalgebra = "0.18.0"

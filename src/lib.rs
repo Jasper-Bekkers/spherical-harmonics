@@ -50,6 +50,10 @@ fn factorial(x: i32) -> f32 {
     }
 }
 
+fn to_spherical(dir: &(f32, f32, f32)) -> (f32, f32) {
+    (dir.1.atan2(dir.0), dir.2.max(0.0).min(1.0).acos())
+}
+
 fn eval_legendre_polynomial(l: i32, m: i32, x: f32) -> f32 {
     let mut pmm = 1.0;
     if m > 0 {
@@ -163,10 +167,6 @@ pub fn project_fn<R: Rng, F: Fn(f32, f32) -> f32>(
     coeffs
 }
 
-pub fn to_spherical(dir: &(f32, f32, f32)) -> (f32, f32) {
-    (dir.1.atan2(dir.0), dir.2.max(0.0).min(1.0).acos())
-}
-
 pub fn project_sparse_samples(
     order: i32,
     dirs: &Vec<(f32, f32, f32)>,
@@ -215,7 +215,7 @@ impl Image {
     }
 }
 
-fn main() {
-    let result = project_sparse_samples(4, &vec![(0.0, 1.0, 0.0)], &vec![10.0]);
-    println!("{:?}", result);
-}
+// fn main() {
+//     let result = project_sparse_samples(1, &vec![(0.0, 0.0, 1.0)], &vec![10.0]);
+//     println!("{:?}", result);
+// }
