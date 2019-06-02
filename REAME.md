@@ -26,7 +26,7 @@ More info: https://www.wihlidal.com/blog/pipeline/2018-09-16-dxil-signing-post-c
 
 ## License
 
-Licensed under MIT license ([LICENSE](LICENSE) or http://opensource.org/licenses/MIT)
+Licensed under Apache 2.0 license (http://opensource.org/licenses/Apache-2.0)
 
 ## Contribution
 
