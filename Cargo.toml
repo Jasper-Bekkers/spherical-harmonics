@@ -8,7 +8,7 @@ license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/Jasper-Bekkers/spherical-harmonics"
 repository = "https://github.com/Jasper-Bekkers/spherical-harmonics"
-keywords = ["rendering", "spherical", "harmonics"]
+keywords = ["rendering", "spherical", "harmonics", "sh"]
 categories = ["rendering"]
 include = [
     "src/*.rs",

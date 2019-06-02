@@ -4,7 +4,7 @@ spherical-harmonics
 [![Latest version](https://img.shields.io/crates/v/spherical-harmonics.svg)](https://crates.io/crates/spherical-harmonics)
 [![Documentation](https://docs.rs/spherical-harmonics/badge.svg)](https://docs.rs/spherical-harmonics)
 [![Lines of code](https://tokei.rs/b1/github/Jasper-Bekkers/spherical-harmonics)](https://github.com/Jasper-Bekkers/spherical-harmonics)
-![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/crates/l/spherical-harmonics.svg)
 
 This crate provides a rust native port of the Google [Spherical Harmonics](https://github.com/google/spherical-harmonics) library.
 
